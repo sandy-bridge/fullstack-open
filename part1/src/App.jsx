@@ -3,10 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-const Hello = () => {
+const Hello = (props) => {
   return (
     <div>
-      <p>Hello world</p>
+      <p>Hello {props.name}</p>
     </div>
   )
 }
@@ -25,7 +25,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <Hello/>
+      <Hello name="Daisy"/>
     </>
   )
 }
