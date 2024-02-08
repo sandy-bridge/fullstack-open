@@ -3,6 +3,11 @@ const Header = (props) => {
     <h1>{props.course}</h1>
   )
 }
+const Footer = (props) => {
+  return (
+    <p>Number of exercises {props.sum}</p>
+  )
+}
 
 const App = () => {
   const course = 'Half Stack application development'
@@ -25,7 +30,7 @@ const App = () => {
       <p>
         {part3} {exercises3}
       </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <Footer sum={exercises1+exercises2+exercises3}/>
     </div>
   )
 }
