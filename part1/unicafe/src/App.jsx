@@ -24,11 +24,29 @@ const App = () => {
     setPercentage((newGood/newTotal)*100)
   }
 
+  const AddNeutral = () => {
+    let newNeutral=neutral+1
+    let newTotal=total+1
+    setNeutral(newNeutral)
+    setTotal(newTotal)
+    setAverage((good-bad)/newTotal)
+    setPercentage((good/newTotal)*100)
+  }
+
+  const AddBad = () => {
+    let newBad=bad+1
+    let newTotal=total+1
+    setBad(newBad)
+    setTotal(newTotal)
+    setAverage((good-newBad)/newTotal)
+    setPercentage((good/newTotal)*100)
+  }
+
   return (
     <div>
       <Button handleClick={AddGood} text="good"/>
-      <Button handleClick={() => setNeutral(neutral+1) }text="neutral"/>
-      <Button handleClick={() => setBad(bad+1) }text="bad"/>
+      <Button handleClick={AddNeutral}text="neutral"/>
+      <Button handleClick={AddBad}text="bad"/>
       <h1>Statistics</h1>
       <p>
         Good: {good}
