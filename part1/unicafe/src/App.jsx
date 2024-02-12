@@ -14,7 +14,9 @@ const App = () => {
 
   return (
     <div>
-      <Button text="good"/>
+      <Button handleClick={() => setGood(good+1) }text="good"/>
+      <h1>Statistics</h1>
+      <p>Good: {good}</p>
     </div>
   )
 }
