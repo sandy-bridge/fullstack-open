@@ -1,5 +1,11 @@
 import { useState } from 'react'
 
+const Button = ({handleClick, text}) => (
+  <div>
+    <button onClick={handleClick}>{text}</button>
+  </div>
+)
+
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
@@ -8,7 +14,7 @@ const App = () => {
 
   return (
     <div>
-      code here
+      <Button text="good"/>
     </div>
   )
 }
