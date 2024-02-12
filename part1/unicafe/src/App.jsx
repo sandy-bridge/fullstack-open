@@ -13,10 +13,20 @@ const App = () => {
   const [bad, setBad] = useState(0)
   const [average, setAverage] = useState(0)
   const [percentage, setPercentage] = useState(0)
+  const [total, setTotal] = useState(0)
+
+  const AddGood = () => {
+    let newGood=good+1
+    let newTotal=total+1
+    setGood(newGood)
+    setTotal(newTotal)
+    setAverage((newGood-bad)/newTotal)
+    setPercentage((newGood/newTotal)*100)
+  }
 
   return (
     <div>
-      <Button handleClick={() => setGood(good+1) }text="good"/>
+      <Button handleClick={AddGood} text="good"/>
       <Button handleClick={() => setNeutral(neutral+1) }text="neutral"/>
       <Button handleClick={() => setBad(bad+1) }text="bad"/>
       <h1>Statistics</h1>
@@ -30,10 +40,13 @@ const App = () => {
         Bad: {bad}
       </p>
       <p>
+        Total: {total}
+      </p>
+      <p>
         Average: {average}
       </p>
       <p>
-        Percentage: {percentage}
+        Percentage: {percentage}%
       </p>
     </div>
   )
