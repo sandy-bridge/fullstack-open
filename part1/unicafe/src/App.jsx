@@ -6,7 +6,15 @@ const Button = ({handleClick, text}) => (
   </span>
 )
 
-const Statistics = ({ good, neutral, bad, total, average, percentage}) => (
+const Statistics = ({ good, neutral, bad, total, average, percentage}) => {
+  if(total == 0){
+    return (
+      <p>
+        No feedback given
+      </p>
+    )
+  }
+  return (
   <div>
     <h1>Statistics</h1>
     <p>
@@ -28,7 +36,8 @@ const Statistics = ({ good, neutral, bad, total, average, percentage}) => (
       Percentage: {percentage}%
     </p>
   </div>
-)
+  )
+}
 
 const App = () => {
   // save clicks of each button to its own state
