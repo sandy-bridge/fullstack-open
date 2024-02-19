@@ -14,6 +14,10 @@ const App = () => {
     const personObject = {
       name: newName
     }
+    if (persons.some(person => person.name == newName)) {
+      alert(`${newName} already exists!`)
+      return
+    }
     setPersons(persons.concat(personObject))
     setNewName('')
   }
