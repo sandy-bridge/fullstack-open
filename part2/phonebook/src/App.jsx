@@ -10,7 +10,12 @@ const App = () => {
 
   const handleNewNameChange = (event) => 
     setNewName(event.target.value)
-  
+
+  const [newNumber, setNewNumber] = useState('')
+
+  const handleNewNumberChange = (event) => 
+    setNewNumber(event.target.value)
+
   const addPerson = (event) => {
     event.preventDefault()
     if (persons.some(person => person.name == newName)) {
@@ -18,7 +23,8 @@ const App = () => {
       return
     }
     const personObject = {
-      name: newName
+      name: newName,
+      number: newNumber
     }
     if (persons.some(person => person.name == newName)) {
       alert(`${newName} already exists!`)
@@ -34,6 +40,9 @@ const App = () => {
       <form onSubmit={addPerson}>
         <div>
           name: <input value={newName} onChange={handleNewNameChange}/>
+        </div>
+        <div>
+          number: <input value={newNumber} onChange={handleNewNumberChange}/>
         </div>
         <div>
           <button type="submit">add</button>
