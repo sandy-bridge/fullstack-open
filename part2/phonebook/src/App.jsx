@@ -1,9 +1,5 @@
 import { useState } from 'react'
-import Person from './components/Person'
-
-const Persons = ({ persons }) => (
-  persons.map(person => <Person key={person.name} person={person} />)
-)
+import Persons from './components/Persons'
 
 const PersonForm = (props) => {
   return (
