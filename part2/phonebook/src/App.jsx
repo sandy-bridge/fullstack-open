@@ -8,6 +8,22 @@ const Persons = ({ persons }) => (
   persons.map(person => <Person key={person.name} person={person} />)
 )
 
+const PersonForm = (props) => {
+  return (
+  <form onSubmit={props.addPerson}>
+    <div>
+      name: <input value={props.newName} onChange={props.handleNewNameChange}/>
+    </div>
+    <div>
+      number: <input value={props.newNumber} onChange={props.handleNewNumberChange}/>
+    </div>
+    <div>
+      <button type="submit">add</button>
+    </div>
+  </form>
+  )
+}
+
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas',
@@ -45,17 +61,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <form onSubmit={addPerson}>
-        <div>
-          name: <input value={newName} onChange={handleNewNameChange}/>
-        </div>
-        <div>
-          number: <input value={newNumber} onChange={handleNewNumberChange}/>
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <PersonForm addPerson={addPerson} handleNewNameChange={handleNewNameChange} newName={newName} handleNewNumberChange={handleNewNumberChange}/>
       <h2>Numbers</h2>
       <Persons persons={persons}/>
     </div>
