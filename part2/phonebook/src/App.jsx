@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
+import { Axios } from 'axios'
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -36,6 +38,10 @@ const App = () => {
     setNewName('')
     setNewNumber('')
   }
+
+  useEffect(() => {
+  axios.get('http://127.0.0.1:3001/persons')
+  .then(response => setPersons(response.data))}, [])
 
   return (
     <div>
