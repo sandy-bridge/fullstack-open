@@ -1,8 +1,5 @@
 import { useState } from 'react'
-
-const Person = ({ person }) => (
-  <p>{person.name}: {person.number}</p>
-)
+import Person from './components/Person'
 
 const Persons = ({ persons }) => (
   persons.map(person => <Person key={person.name} person={person} />)
