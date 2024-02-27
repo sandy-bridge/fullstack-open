@@ -1,7 +1,11 @@
 import { useState } from 'react'
 
+const Person = ({ person }) => (
+  <p>{person.name}: {person.number}</p>
+)
+
 const Persons = ({ persons }) => (
-  persons.map(person => <p key={person.name}>{person.name}: {person.number}</p>)
+  persons.map(person => <Person key={person.name} person={person} />)
 )
 
 const App = () => {
