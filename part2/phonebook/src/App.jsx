@@ -33,9 +33,12 @@ const App = () => {
       alert(`${newName} already exists!`)
       return
     }
-    setPersons(persons.concat(personObject))
-    setNewName('')
-    setNewNumber('')
+    axios.post('http://localhost:3001/persons', personObject)
+    .then(response => {
+      setPersons(persons.concat(response.data))
+      setNewName('')
+      setNewNumber('')
+    })
   }
 
   useEffect(() => {
@@ -45,7 +48,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <PersonForm addPerson={addPerson} handleNewNameChange={handleNewNameChange} newName={newName} handleNewNumberChange={handleNewNumberChange}/>
+      <PersonForm addPerson={addPerson} handleNewNameChange={handleNewNameChange} newName={newName} handleNewNumberChange={handleNewNumberChange} newNumber={newNumber}/>
       <h2>Numbers</h2>
       <Persons persons={persons}/>
     </div>
