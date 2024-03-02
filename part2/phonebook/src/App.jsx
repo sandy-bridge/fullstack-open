@@ -34,17 +34,15 @@ const App = () => {
       alert(`${newName} already exists!`)
       return
     }
-    axios.post('http://localhost:3001/persons', personObject)
-    .then(response => {
-      setPersons(persons.concat(response.data))
+    personService.create(personObject)
+      .then(data => setPersons(persons.concat(data)))
       setNewName('')
       setNewNumber('')
-    })
   }
 
   useEffect(() => {
   personService.getAll()
-  .then(data => setPersons(data))}, [])
+    .then(data => setPersons(data))}, [])
 
   return (
     <div>
