@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
-import { Axios } from 'axios'
 
 const App = () => {
   const [persons, setPersons] = useState([
