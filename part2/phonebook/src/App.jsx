@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
+import personService from './services/persons'
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -42,8 +43,8 @@ const App = () => {
   }
 
   useEffect(() => {
-  axios.get('http://127.0.0.1:3001/persons')
-  .then(response => setPersons(response.data))}, [])
+  personService.getAll()
+  .then(data => setPersons(data))}, [])
 
   return (
     <div>
