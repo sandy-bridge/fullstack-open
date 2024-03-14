@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
 import personService from './services/persons'
+import Notification from './components/Notification'
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
   const [newName, setNewName] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleNewNameChange = (event) => 
     setNewName(event.target.value)
@@ -32,8 +33,14 @@ const App = () => {
     }
     personService.create(personObject)
       .then(data => setPersons(persons.concat(data)))
+      setErrorMessage(
+        `Added ${newName}`
+      )
       setNewName('')
       setNewNumber('')
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
   }
   const removePerson = (id) => {
     setPersons(persons.filter(person => person.id != id))
@@ -46,6 +53,7 @@ const App = () => {
 
   return (
     <div>
+      <Notification message={errorMessage}/>
       <h2>Phonebook</h2>
       <PersonForm addPerson={addPerson} handleNewNameChange={handleNewNameChange} newName={newName} handleNewNumberChange={handleNewNumberChange} newNumber={newNumber}/>
       <h2>Numbers</h2>
