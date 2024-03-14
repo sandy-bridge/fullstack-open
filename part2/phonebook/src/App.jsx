@@ -35,6 +35,10 @@ const App = () => {
       setNewName('')
       setNewNumber('')
   }
+  const removePerson = (id) => {
+    setPersons(persons.filter(person => person.id != id))
+    personService.remove(id)
+  }
 
   useEffect(() => {
   personService.getAll()
@@ -45,7 +49,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <PersonForm addPerson={addPerson} handleNewNameChange={handleNewNameChange} newName={newName} handleNewNumberChange={handleNewNumberChange} newNumber={newNumber}/>
       <h2>Numbers</h2>
-      <Persons persons={persons}/>
+      <Persons persons={persons} remove={removePerson}/>
     </div>
   )
 }
